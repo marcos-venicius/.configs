@@ -9,6 +9,7 @@ call plug#begin('C:\Users\marco\Documents\vim-plugins')
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'mangeshrex/uwu.vim'
+  Plug 'prettier/vim-prettier', {'build': 'npm install'}
 call plug#end()
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -37,6 +38,7 @@ set breakindent
 
 nnoremap <C-n> gt
 nnoremap <C-p> gT
+nnoremap <C-i> :PrettierAsync <CR><ESC>
 
 highlight CursorLine ctermfg=NONE ctermbg=black cterm=bold
 highlight CursorLineNr ctermfg=white ctermbg=blue cterm=bold
@@ -75,4 +77,3 @@ let g:UwuNR=1
 colorscheme uwu
 
 let g:vim_jsx_pretty_highlight_close_tag = 0
-
