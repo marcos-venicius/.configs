@@ -40,6 +40,39 @@ nnoremap <C-n> gt
 nnoremap <C-p> gT
 nnoremap <C-i> :PrettierAsync <CR><ESC>
 
+nnoremap <silent> K :call CocAction('doHover')<CR>
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+"<CTRL-SPACE> to refresh autocompletion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nnoremap <silent> B :Buffers <CR>
+
+"enter to confirm selection
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 highlight CursorLine ctermfg=NONE ctermbg=black cterm=bold
 highlight CursorLineNr ctermfg=white ctermbg=blue cterm=bold
 
@@ -77,3 +110,5 @@ let g:UwuNR=1
 colorscheme uwu
 
 let g:vim_jsx_pretty_highlight_close_tag = 0
+
+
