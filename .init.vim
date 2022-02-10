@@ -10,11 +10,22 @@ call plug#begin('C:\Users\marco\Documents\vim-plugins')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'mangeshrex/uwu.vim'
   Plug 'prettier/vim-prettier', {'build': 'npm install'}
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 nnoremap <silent> <C-k><C-f> :NERDTreeToggle<CR>
+
+lua << EOF
+require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } } 
+EOF
+
+nnoremap <C-f> :Telescope find_files<cr>
+nnoremap <C-g> :Telescope live_grep<cr>
+nnoremap <C-b> :Telescope buffers<cr>
+nnoremap <C-t> :Telescope help_tags<cr>
 
 set nu
 set rnu
@@ -112,3 +123,4 @@ colorscheme uwu
 let g:vim_jsx_pretty_highlight_close_tag = 0
 
 
+set path+=**
