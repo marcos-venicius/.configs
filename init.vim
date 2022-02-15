@@ -19,10 +19,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nnoremap <silent> <C-k><C-f> :NERDTreeToggle<CR>
 
 lua << EOF
-require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } } 
+require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules",".git",".expo",".vs"} } } 
 EOF
 
-nnoremap <C-f> :Telescope find_files<cr>
+nnoremap <C-f> :Telescope git_files<cr>
 nnoremap <C-g> :Telescope live_grep<cr>
 nnoremap <C-b> :Telescope buffers<cr>
 nnoremap <C-t> :Telescope help_tags<cr>
