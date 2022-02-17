@@ -1,9 +1,12 @@
 
 function git_branch {
-  if (Test-Path -Path ".git") {
-    Write-Host -ForegroundColor white -NoNewLine " at "
-    Write-Host -ForegroundColor green -NoNewLine "$(git rev-parse --abbrev-ref HEAD) "
-  }
+  Try {
+    $branch="$(git rev-parse --abbrev-ref HEAD)"
+    if ($branch.Length -gt 0) {
+      Write-Host -ForegroundColor white -NoNewLine " at "
+      Write-Host -ForegroundColor green -NoNewLine "$(git rev-parse --abbrev-ref HEAD) "
+    }
+  } Catch {}
 }
 
 function generate_prompt {
