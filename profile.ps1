@@ -1,12 +1,9 @@
+
 function git_branch {
   if (Test-Path -Path ".git") {
     Write-Host -ForegroundColor white -NoNewLine " at "
     Write-Host -ForegroundColor green -NoNewLine "$(git rev-parse --abbrev-ref HEAD) "
   }
-}
-
-function get_path {
-  pwd
 }
 
 function generate_prompt {
