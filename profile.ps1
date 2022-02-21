@@ -3,8 +3,9 @@ function git_branch {
   Try {
     $branch="$(git rev-parse --abbrev-ref HEAD)"
     if ($branch.Length -gt 0) {
-      Write-Host -ForegroundColor white -NoNewLine " at "
-      Write-Host -ForegroundColor green -NoNewLine "$(git rev-parse --abbrev-ref HEAD) "
+      Write-Host -ForegroundColor yellow -NoNewLine " ("
+      Write-Host -ForegroundColor green -NoNewLine "$(git rev-parse --abbrev-ref HEAD)"
+      Write-Host -ForegroundColor yellow -NoNewLine ")"
     }
   } Catch {}
 }
@@ -16,16 +17,15 @@ function generate_prompt {
   $current_dir=$split[$split.Length - 1]
   $long_path=$path.Split(":")[1]
 
+  Write-Host -NoNewLine -ForegroundColor white "[$(Get-Date -Format hh:mm)] "
   Write-Host -NoNewLine "$($sector[0]) "
   Write-Host -NoNewLine -ForegroundColor cyan "~ "
-  Write-Host -NoNewLine -ForegroundColor gray $long_path
+  Write-Host -ForegroundColor gray $long_path
+  Write-Host -NoNewLine -ForegroundColor cyan "$current_dir"
   git_branch
-  Write-Host -NoNewLine -ForegroundColor cyan "`n$current_dir"
-  Write-Host -NoNewLine -ForegroundColor white " [$(Get-Date -Format hh:mm)] "
-  return " - "
+  return " "
 }
 
 function Prompt() {
   generate_prompt
 }
-
