@@ -1,4 +1,5 @@
-call plug#begin('C:\Users\marco\Documents\vim-plugins')
+
+call plug#begin('~/.vim/plugged')
   Plug 'sainnhe/sonokai'
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
   Plug 'peitalin/vim-jsx-typescript'
@@ -8,10 +9,10 @@ call plug#begin('C:\Users\marco\Documents\vim-plugins')
   Plug 'mxw/vim-jsx'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'mangeshrex/uwu.vim'
   Plug 'prettier/vim-prettier', {'build': 'npm install'}
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'mangeshrex/uwu.vim'
 call plug#end()
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -22,7 +23,7 @@ lua << EOF
 require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules",".git",".expo",".vs"} } } 
 EOF
 
-nnoremap <C-f> :Telescope git_files<cr>
+nnoremap <C-f> :Telescope find_files<cr>
 nnoremap <C-g> :Telescope live_grep<cr>
 nnoremap <C-b> :Telescope buffers<cr>
 nnoremap <C-t> :Telescope help_tags<cr>
@@ -90,11 +91,6 @@ highlight CursorLineNr ctermfg=white ctermbg=blue cterm=bold
 set nobk nowb noswf noudf
 set noeb vb t_vb=
 
-if has('persistent_undo')         "check if your vim version supports
-  set undodir=C:\Users\marco\Documents\temp     "directory where the undo files will be stored
-  set undofile                    "turn on the feature
-endif
-
 filetype indent on
 syntax on
 
@@ -118,7 +114,7 @@ endif
 "colorscheme sonokai
 
 let g:UwuNR=1
-colorscheme uwu
+colorscheme everblush
 
 let g:vim_jsx_pretty_highlight_close_tag = 0
 
