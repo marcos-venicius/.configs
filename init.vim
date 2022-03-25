@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'prettier/vim-prettier', {'build': 'npm install'}
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
   Plug 'mangeshrex/uwu.vim'
 call plug#end()
 
