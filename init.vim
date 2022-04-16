@@ -1,124 +1,69 @@
+:set tabstop=2
+:set shiftwidth=2
+:set expandtab
+:set path+=**
+:set wildignore+=**/node_modules/**
+:set background=dark
+:set omnifunc=syntaxcomplete#Complete
+:set autochdir
+:set number
+:set nowrap
+:set splitright
 
-call plug#begin('~/.vim/plugged')
-  Plug 'sainnhe/sonokai'
-  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-  Plug 'peitalin/vim-jsx-typescript'
-  Plug 'itchyny/lightline.vim'
+filetype plugin on
+filetype plugin indent on
 
-  Plug 'pangloss/vim-javascript'
-  Plug 'mxw/vim-jsx'
-  Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'prettier/vim-prettier', {'build': 'npm install'}
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-  Plug 'mangeshrex/uwu.vim'
+" 4 spaces only to files .cs
+autocmd Filetype cs setlocal tabstop=4
+
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-l>'
+let g:multi_cursor_select_all_word_key = '<C-s-l>'
+let g:multi_cursor_start_key           = 'g<C-l>'
+let g:multi_cursor_select_all_key      = 'g<C-s-l>'
+let g:multi_cursor_next_key            = '<C-l>'
+let g:multi_cursor_prev_key            = '<C-h>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+nnoremap nf :NERDTreeFocus<CR>
+nnoremap nt :NERDTree<CR>
+nnoremap ng :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+call plug#begin()
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'sainnhe/gruvbox-material'
+  Plug 'preservim/nerdtree'
+  Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+colorscheme gruvbox-material
 
-nnoremap <silent> <C-k><C-f> :NERDTreeToggle<CR>
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
-lua << EOF
-require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules",".git",".expo",".vs"} } } 
-EOF
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
-nnoremap <C-f> :Telescope find_files<cr>
-nnoremap <C-g> :Telescope live_grep<cr>
-nnoremap <C-b> :Telescope buffers<cr>
-nnoremap <C-t> :Telescope help_tags<cr>
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
-set nu
-set rnu
-set nowrap
-set mouse=a
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set ai
-set inccommand=split
-set si
-set cursorline
-set updatetime=300
-set shortmess+=c
-set splitright
-set splitbelow
-set incsearch
-set hlsearch
-set title
-set breakindent
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <NUL> coc#refresh()
 
 nnoremap <C-n> gt
 nnoremap <C-p> gT
-nnoremap <C-i> :PrettierAsync <CR><ESC>
 
 nnoremap <silent> K :call CocAction('doHover')<CR>
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-"<CTRL-SPACE> to refresh autocompletion
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-nnoremap <silent> B :Buffers <CR>
-
-"enter to confirm selection
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-highlight CursorLine ctermfg=NONE ctermbg=black cterm=bold
-highlight CursorLineNr ctermfg=white ctermbg=blue cterm=bold
-
-set nobk nowb noswf noudf
-set noeb vb t_vb=
-
-filetype indent on
-syntax on
-
-let g:jsx_ext_required = 0
-
-autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-
-autocmd bufnewfile,bufread *.js set filetype=javascriptreact
-
-if has('termguicolors')
-	set termguicolors
-endif
-
-" ---- sonokai
-"let g:sonokai_style = 'default'
-"let g:sonokai_enable_italic = 1
-"let g:sonokai_disable_italic_comment = 1
-"let g:sonokai_transparent_background = 1
-"
-"colorscheme sonokai
-
-let g:UwuNR=1
-colorscheme everblush
-
-let g:vim_jsx_pretty_highlight_close_tag = 0
-
-
-set path+=**
-set autochdir
