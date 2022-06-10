@@ -43,6 +43,7 @@ call plug#end()
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+nnoremap gp :Prettier<cr>
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
