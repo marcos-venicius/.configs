@@ -1,6 +1,6 @@
-:set tabstop=2
 :set shiftwidth=2
 :set expandtab
+:set tabstop=2
 :set path+=**
 :set wildignore+=**/node_modules/**
 :set background=dark
@@ -9,15 +9,14 @@
 :set number
 :set nowrap
 :set splitright
+:set termguicolors
 
 filetype plugin on
 filetype plugin indent on
 
-" 4 spaces only to files .cs
 autocmd Filetype cs setlocal tabstop=4
 
 let g:multi_cursor_use_default_mapping=0
-
 " Default mapping
 let g:multi_cursor_start_word_key      = '<C-l>'
 let g:multi_cursor_select_all_word_key = '<C-s-l>'
@@ -36,12 +35,12 @@ nnoremap <C-f> :NERDTreeFind<CR>
 call plug#begin()
   Plug 'terryma/vim-multiple-cursors'
   Plug 'editorconfig/editorconfig-vim'
-  Plug 'sainnhe/gruvbox-material'
+  Plug 'dunstontc/vim-vscode-theme'
   Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
-colorscheme gruvbox-material
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
@@ -67,3 +66,6 @@ nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
+
+colorscheme dark_plus
+
