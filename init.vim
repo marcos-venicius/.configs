@@ -35,7 +35,7 @@ nnoremap <C-f> :NERDTreeFind<CR>
 call plug#begin()
   Plug 'terryma/vim-multiple-cursors'
   Plug 'editorconfig/editorconfig-vim'
-  Plug 'dunstontc/vim-vscode-theme'
+  Plug 'dbb/vim-gummybears-colorscheme'
   Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 call plug#end()
@@ -43,7 +43,7 @@ call plug#end()
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-nnoremap gp :Prettier<cr>
+nnoremap <C-i> :Prettier<cr>
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -68,5 +68,5 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 
-colorscheme dark_plus
+colorscheme gummybears
 
