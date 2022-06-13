@@ -10,6 +10,7 @@
 :set nowrap
 :set splitright
 :set termguicolors
+:set mouse=a
 
 filetype plugin on
 filetype plugin indent on
@@ -27,6 +28,10 @@ let g:multi_cursor_prev_key            = '<C-h>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
+let g:blamer_enabled = 1
+let g:blamer_show_in_insert_modes = 0
+let g:blamer_relative_time = 1
+
 nnoremap nf :NERDTreeFocus<CR>
 nnoremap nt :NERDTree<CR>
 nnoremap ng :NERDTreeToggle<CR>
@@ -36,6 +41,7 @@ call plug#begin()
   Plug 'terryma/vim-multiple-cursors'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'dbb/vim-gummybears-colorscheme'
+  Plug 'APZelos/blamer.nvim'
   Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 call plug#end()
