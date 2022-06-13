@@ -10,7 +10,7 @@
 clone project
 ---
 ```bash
-git clone [https://github.com/marcos-development-business/.configs.git](https://github.com/marcos-development-business/.configs.git)
+git clone https://github.com/dev-one-company/.configs.git
 ```
 
 install tmux
@@ -34,7 +34,7 @@ see profile path
 echo $PROFILE
 ```
 
-put the [profile.ps1](https://github.com/marcos-development-business/.configs/blob/main/profile.ps1) contents at the path containing in `$PROFILE` variable
+put the [profile.ps1](https://github.com/dev-one-company/.configs/blob/main/profile.ps1) contents at the path containing in `$PROFILE` variable
 ---
 
 ## Remap `Caps` & `Esc` on wnidows
