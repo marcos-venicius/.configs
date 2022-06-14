@@ -1,0 +1,15 @@
+[core]
+	editor = nvim
+
+[alias]
+  co = checkout
+  lg = log --all --graph --decorate --oneline --abbrev-commit
+  cm = commit
+  ac = !git add -A && git commit
+  st = status -sb
+  stl = status -sb .
+  tags = tag -l
+  branches = branch -a
+  remotes = remote -v
+  untrack = update-index --assume-unchanged
+  track = update-index --no-assume-unchanged
