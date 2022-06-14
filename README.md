@@ -37,21 +37,17 @@ echo $PROFILE
 put the [profile.ps1](https://github.com/dev-one-company/.configs/blob/main/profile.ps1) contents at the path containing in `$PROFILE` variable
 ---
 
-## Remap `Caps` & `Esc` on wnidows
+# Install vim-plug
 
-1. create `swap-esc-caps.reg` file anywhere
-2. put this code inside
-```reg
-Windows Registry Editor Version 5.00
+## Windows
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
-"Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,3a,00,01,00,01,00,3a,00,00,00,00,00
+> [here](https://github.com/junegunn/vim-plug) is the official repository
+
+---
+neovim on windows
+
+```ps1
+iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
 ```
-3. Open the start menu and search for “Regedit” (click “Yes” if any dialog appears)
-4. Click on “File”
-5. Click on “Import”
-6. Select the file you have just saved (i.e. ‘swap-esc-caps.reg’)
-7. Log out and then log back in for the changes to take effect. Sometimes a full restart is required.
-8. Start using your keyboard more efficiently!
 
-Done! now, caps is esc, and esc is caps
