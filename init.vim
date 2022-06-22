@@ -103,59 +103,59 @@ set background=dark
 " [TEMA] Configuração para tema ayu ------------------------------------------
 
 " Define o tema
-set termguicolors
+" set termguicolors
 " let ayucolor="mirage"
-let ayucolor="dark"
-colorscheme ayu
+" let ayucolor="dark"
+" colorscheme ayu
 
 " Tema Airline
-let g:airline_theme='onehalfdark'
+" let g:airline_theme='onehalfdark'
 
 " Define se a cor usada pelo indentLine vai seguir o tema (0) ou o padrão do
 " indentLine (1), que é cinza
-let g:indentLine_setColors = 0
+" let g:indentLine_setColors = 0
 
 " [TEMA] Configuração para tema onehalf --------------------------------------
 
 " " Define o tema
-set t_Co=256
-set cursorline
+" set t_Co=256
+" set cursorline
 " set notermguicolors
-colorscheme onehalfdark
+" colorscheme onehalfdark
 
 " " Tema Airline
-let g:airline_theme='onehalfdark'
+" let g:airline_theme='onehalfdark'
 
 " " Define se a cor usada pelo indentLine vai seguir o tema (0) ou o padrão do
 " " indentLine (1), que é cinza
-let g:indentLine_setColors = 1
+" let g:indentLine_setColors = 1
 
 " " Define a cor da linha
-let g:indentLine_color_term = 237
+" let g:indentLine_color_term = 237
 
 " [TEMA] Configuração para tema tokyonight -----------------------------------
 
-" set termguicolors
+set termguicolors
 
-" let g:tokyonight_style = 'night' " available: night, storm
-" let g:tokyonight_enable_italic = 1
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
 
-" colorscheme tokyonight
-" let g:airline_theme = "tokyonight"
+colorscheme tokyonight
+let g:airline_theme = "tokyonight"
 
 " Mudando o tema pra ficar do meu jeito --------------------------------------
 
 " " Função utilitária para gerar o tema
 
-" function! s:h(group, style)
-"  execute "highlight" a:group
-"   \ "guifg=" (has_key(a:style, "fg")    ? a:style.fg   : "NONE")
-"   \ "guibg=" (has_key(a:style, "bg")    ? a:style.bg   : "NONE")
-"   \ "guisp=" (has_key(a:style, "sp")    ? a:style.sp   : "NONE")
-"   \ "gui="   (has_key(a:style, "gui")   ? a:style      : "NONE")
-" endfunction
+function! s:h(group, style)
+ execute "highlight" a:group
+  \ "guifg=" (has_key(a:style, "fg")    ? a:style.fg   : "NONE")
+  \ "guibg=" (has_key(a:style, "bg")    ? a:style.bg   : "NONE")
+  \ "guisp=" (has_key(a:style, "sp")    ? a:style.sp   : "NONE")
+  \ "gui="   (has_key(a:style, "gui")   ? a:style      : "NONE")
+endfunction
 
-" call s:h("ColorColumn", { "bg": "#444444" })
+call s:h("ColorColumn", { "bg": "#444444" })
 
 " Configuração do plugin IndentLine ------------------------------------------
 
