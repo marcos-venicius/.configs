@@ -26,12 +26,6 @@ call plug#begin()
   " Adicionar syntax hightlight para várias linguagens
   Plug 'sheerun/vim-polyglot' 
 
-  " Suporte para ReScript
-  Plug 'rescript-lang/vim-rescript'
-
-  " Suporte para Elixir
-  Plug 'elixir-editors/vim-elixir'
-
   " === 
   " Início da instalação do fzf
   " O fzf serve para fazer buscas no estilo do sublime text, com Ctrl + P
@@ -59,9 +53,6 @@ call plug#begin()
 
   " Suporte para Git no Vim
   Plug 'tpope/vim-fugitive'
-
-  " Suporte para smooth scrolling
-  Plug 'yuttie/comfortable-motion.vim'
 
   " Emmet
   Plug 'mattn/emmet-vim'
@@ -161,8 +152,8 @@ call s:h("ColorColumn", { "bg": "#444444" })
 
 " Exemplos de linhas verticais: | ¦ ┆ ┊ ▏
 let g:indentLine_enabled = 1
-let g:indentLine_char = '¦'
-let g:indentLine_first_char = '¦'
+let g:indentLine_char = '▏'
+let g:indentLine_first_char = '▏'
 let g:indentLine_showFirstIndentLevel = 1
 
 " Configuração do plugin polyglot para JSX (vim-jsx-pretty) ------------------
@@ -227,13 +218,6 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
-" Scroll para floating windows
-
-nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-
 " Configuração do FZF --------------------------------------------------------
 " Não exibir janela de pré-visualização de conteúdo do arquivo
 let g:fzf_preview_window = []
@@ -265,14 +249,6 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-
-" Configuração do ReScript ---------------------------------------------------
-
-" Key bindings
-autocmd FileType rescript nnoremap <silent> <buffer> <localleader>r :RescriptFormat<CR>
-autocmd FileType rescript nnoremap <silent> <buffer> <localleader>t :RescriptTypeHint<CR>
-autocmd FileType rescript nnoremap <silent> <buffer> <localleader>b :RescriptBuild<CR>
-autocmd FileType rescript nnoremap <silent> <buffer> gd :RescriptJumpToDefinition<CR>
 
 " Autocomplete
 set omnifunc=rescript#Complete
@@ -371,10 +347,9 @@ set list!
 " Sempre exibir a sign column (coluna com os símbolos de erro e warning)
 set signcolumn=yes
 highlight clear SignColumn
-
 " Atalhos com a tecla <leader> ----------------------------------------------
 
-" Define a tecla `leader` como a vírgula
+" Defineva tecla `leader` como a vírgula
 let mapleader=","
 
 " Define a tecla `localleader` como o ponto-e-vírgula
@@ -382,13 +357,22 @@ let maplocalleader=";"
 
 " Atalho para edição do arquivo de configuração do neovim. Só pressionar
 " a tecla <leader> e digitar `ev` (edit vim) no modo normal
-nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
+" Linux
+" nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
+
+" Windows
+nnoremap <leader>ev :e ~/AppData/Local/nvim/init.vim<cr>
 
 "Atalho para recarregar o vim após uma edição no arquivo de configuração
 "(source vim) - <leader> seguido de `sv`
-nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+" Linux
+" nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
-" Comentar linhas usando <leader> + /
+" Windows
+nnoremap <leader>sv :source ~/AppData/Local/nvim/init.vim<cr>
+
+
+" Comentar linhas usando <leader>v+ /
 nnoremap <leader>/ :Commentary<cr>
 vnoremap <leader>/ :Commentary<cr>
 
