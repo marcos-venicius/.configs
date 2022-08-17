@@ -94,17 +94,17 @@ set background=dark
 " [TEMA] Configuração para tema ayu ------------------------------------------
 
 " Define o tema
-" set termguicolors
-" let ayucolor="mirage"
-" let ayucolor="dark"
-" colorscheme ayu
+set termguicolors
+let ayucolor="mirage"
+let ayucolor="dark"
+colorscheme ayu
 
 " Tema Airline
-" let g:airline_theme='onehalfdark'
+let g:airline_theme='onehalfdark'
 
 " Define se a cor usada pelo indentLine vai seguir o tema (0) ou o padrão do
 " indentLine (1), que é cinza
-" let g:indentLine_setColors = 0
+let g:indentLine_setColors = 0
 
 " [TEMA] Configuração para tema onehalf --------------------------------------
 
@@ -126,13 +126,13 @@ set background=dark
 
 " [TEMA] Configuração para tema tokyonight -----------------------------------
 
-set termguicolors
+" set termguicolors
 
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1
+" let g:tokyonight_style = 'night' " available: night, storm
+" let g:tokyonight_enable_italic = 1
 
-colorscheme tokyonight
-let g:airline_theme = "tokyonight"
+" colorscheme tokyonight
+" let g:airline_theme = "tokyonight"
 
 " Mudando o tema pra ficar do meu jeito --------------------------------------
 
@@ -152,14 +152,14 @@ call s:h("ColorColumn", { "bg": "#444444" })
 
 " Exemplos de linhas verticais: | ¦ ┆ ┊ ▏
 let g:indentLine_enabled = 1
-let g:indentLine_char = '▏'
-let g:indentLine_first_char = '▏'
+let g:indentLine_char = '¦'
+let g:indentLine_first_char = '¦'
 let g:indentLine_showFirstIndentLevel = 1
 
 " Configuração do plugin polyglot para JSX (vim-jsx-pretty) ------------------
 
 let g:vim_jsx_pretty_highlight_close_tag = 0
-let g:vim_jsx_pretty_colorful_config = 0
+let g:vim_jsx_pretty_colorful_config = 1
 
 " Configurações do plugin Airline --------------------------------------------
 
@@ -199,12 +199,18 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Usar Ctrl + Espaço para abrir autocomplete no modo de inserção
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+hi CocMenuSel ctermbg=109 guibg=#13354A
+hi CocSearch ctermfg=12 guifg=#18A3FF
+
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
+
+inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1):
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#refresh()
 
 " Atalho para abrir :CocAction
 nmap <leader>ac <Plug>(coc-codeaction)
@@ -358,18 +364,18 @@ let maplocalleader=";"
 " Atalho para edição do arquivo de configuração do neovim. Só pressionar
 " a tecla <leader> e digitar `ev` (edit vim) no modo normal
 " Linux
-" nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
+nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
 
 " Windows
-nnoremap <leader>ev :e ~/AppData/Local/nvim/init.vim<cr>
+" nnoremap <leader>ev :e ~/AppData/Local/nvim/init.vim<cr>
 
 "Atalho para recarregar o vim após uma edição no arquivo de configuração
 "(source vim) - <leader> seguido de `sv`
 " Linux
-" nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
 " Windows
-nnoremap <leader>sv :source ~/AppData/Local/nvim/init.vim<cr>
+" nnoremap <leader>sv :source ~/AppData/Local/nvim/init.vim<cr>
 
 
 " Comentar linhas usando <leader>v+ /
@@ -486,6 +492,8 @@ set writebackup
 set backupcopy=yes
 
 " Correção de typos ----------------------------------------------------------
+
+nmap <F2> <Plug>(coc-rename)
 
 iabbrev lenght length
 iabbrev widht width
