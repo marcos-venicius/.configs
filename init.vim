@@ -203,7 +203,7 @@ endfunction
 nmap <leader>ac <Plug>(coc-codeaction)
 
 " Atalho para aplicar autofix no problema da linha selecionada
-nmap <leader>qf <Plug>(coc-fix-current)
+nmap <leader>f <Plug>(coc-fix-current)
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
@@ -496,3 +496,5 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<C
 inoremap <silent><expr> <c-space> coc#refresh()
 
 nnoremap <leader>i :Prettier <CR><cr>
+
+nmap <leader>c <Plug>(coc-codeaction-selected)<cr>
