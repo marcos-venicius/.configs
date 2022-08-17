@@ -498,3 +498,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 nnoremap <leader>i :Prettier <CR><cr>
 
 nmap <leader>c <Plug>(coc-codeaction-selected)<cr>
+
+nnoremap ,n :call CocAction('diagnosticNext')<CR>
+nnoremap ,p :call CocAction('diagnosticPrevious')<CR>
