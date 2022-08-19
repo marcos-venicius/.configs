@@ -3,15 +3,9 @@
 call plug#begin()
   " Temas
   Plug 'drewtempelmeyer/palenight.vim'
-  Plug 'ayu-theme/ayu-vim'
-  Plug 'sonph/onehalf', { 'rtp': 'vim' }
-  Plug 'ghifarit53/tokyonight-vim'
 
   " Prisma code highlight
   Plug 'pantharshit00/vim-prisma'
-
-  " Caracteres especiais para indentação
-  Plug 'Yggdroot/indentLine'
 
   " Airline
   Plug 'vim-airline/vim-airline'
@@ -51,15 +45,6 @@ call plug#begin()
   " Conquer of Completation - autocomplete - intelisense engine
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-  " Suporte para Git no Vim
-  Plug 'tpope/vim-fugitive'
-
-  " Emmet
-  Plug 'mattn/emmet-vim'
-
-  " Carregar CSV
-  Plug 'chrisbra/csv.vim'
-
   " Melhorar netw
   Plug 'lambdalisue/fern.vim'
  
@@ -76,65 +61,20 @@ set background=dark
 
 " [TEMA] Configurações para tema palenight -----------------------------------
 
-" " set termguicolors
-
-" " Define o tema
-" colorscheme palenight
-
-" " Tema Airline
-" let g:airline_theme='palenight'
-
-" " Define se a cor usada pelo indentLine vai seguir o tema (0) ou o padrão do
-" " indentLine (1), que é cinza
-" let g:indentLine_setColors = 1
-
-" " Define a cor da linha
-" let g:indentLine_color_term = 237
-
-" [TEMA] Configuração para tema ayu ------------------------------------------
+" set termguicolors
 
 " Define o tema
-set termguicolors
-let ayucolor="mirage"
-let ayucolor="dark"
-colorscheme ayu
+colorscheme palenight
 
 " Tema Airline
-let g:airline_theme='onehalfdark'
+let g:airline_theme='palenight'
 
 " Define se a cor usada pelo indentLine vai seguir o tema (0) ou o padrão do
 " indentLine (1), que é cinza
-let g:indentLine_setColors = 0
+let g:indentLine_setColors = 1
 
-" [TEMA] Configuração para tema onehalf --------------------------------------
-
-" " Define o tema
-" set t_Co=256
-" set cursorline
-" set notermguicolors
-" colorscheme onehalfdark
-
-" " Tema Airline
-" let g:airline_theme='onehalfdark'
-
-" " Define se a cor usada pelo indentLine vai seguir o tema (0) ou o padrão do
-" " indentLine (1), que é cinza
-" let g:indentLine_setColors = 1
-
-" " Define a cor da linha
-" let g:indentLine_color_term = 237
-
-" [TEMA] Configuração para tema tokyonight -----------------------------------
-
-" set termguicolors
-
-" let g:tokyonight_style = 'night' " available: night, storm
-" let g:tokyonight_enable_italic = 1
-
-" colorscheme tokyonight
-" let g:airline_theme = "tokyonight"
-
-" Mudando o tema pra ficar do meu jeito --------------------------------------
+" Define a cor da linha
+let g:indentLine_color_term = 237
 
 " " Função utilitária para gerar o tema
 
@@ -147,14 +87,6 @@ function! s:h(group, style)
 endfunction
 
 call s:h("ColorColumn", { "bg": "#444444" })
-
-" Configuração do plugin IndentLine ------------------------------------------
-
-" Exemplos de linhas verticais: | ¦ ┆ ┊ ▏
-let g:indentLine_enabled = 1
-let g:indentLine_char = '¦'
-let g:indentLine_first_char = '¦'
-let g:indentLine_showFirstIndentLevel = 1
 
 " Configuração do plugin polyglot para JSX (vim-jsx-pretty) ------------------
 
@@ -204,9 +136,6 @@ nmap <leader>ac <Plug>(coc-codeaction)
 
 " Atalho para aplicar autofix no problema da linha selecionada
 nmap <leader>f <Plug>(coc-fix-current)
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
@@ -269,17 +198,11 @@ set path+=**
 
 " UI e Layout ----------------------------------------------------------------
 
-" Exibir uma coluna para marcar 80 espaços
-set colorcolumn=80
-
 " Marcar linha atual
 set cursorline
 
 " exibir números de linhas
 set number
-
-" exibir números de linha acima ou abaixo relativos a linha atual
-" set relativenumber
 
 " Habilita a exibição de caracteres ocultos
 set list 
@@ -292,7 +215,7 @@ set listchars+=nbsp:_
 
 " Pode deixar o nvim lento, mas garantido que syntax highlight vai 
 " sempre funcionar
-autocmd BufEnter * :syntax sync fromstart
+" autocmd BufEnter * :syntax sync fromstart
 
 " Habilita o mouse no modo de inserção
 " i = insert
@@ -350,19 +273,11 @@ let maplocalleader=";"
 
 " Atalho para edição do arquivo de configuração do neovim. Só pressionar
 " a tecla <leader> e digitar `ev` (edit vim) no modo normal
-" Linux
 nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
-
-" Windows
-" nnoremap <leader>ev :e ~/AppData/Local/nvim/init.vim<cr>
 
 "Atalho para recarregar o vim após uma edição no arquivo de configuração
 "(source vim) - <leader> seguido de `sv`
-" Linux
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
-
-" Windows
-" nnoremap <leader>sv :source ~/AppData/Local/nvim/init.vim<cr>
 
 
 " Comentar linhas usando <leader>v+ /
@@ -488,14 +403,12 @@ iabbrev heigth height
 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
-hi CocMenuSel ctermbg=0 guibg=#000000
-hi CocSearch ctermfg=0f0 guifg=#00ff00
-hi CocPumMenu ctermbg=0 guibg=#000000
+hi CocMenuSel ctermbg=111 ctermfg=0 guibg=#87afff
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
-nnoremap <leader>i :Prettier <CR><cr>
+nnoremap <leader>i :Prettier <CR>
 
 nmap <leader>c <Plug>(coc-codeaction-selected)<cr>
 
