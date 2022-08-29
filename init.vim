@@ -1,9 +1,6 @@
 " Plugins --------------------------------------------------------------------
 
 call plug#begin()
-  " Temas
-  Plug 'drewtempelmeyer/palenight.vim'
-
   " Prisma code highlight
   Plug 'pantharshit00/vim-prisma'
 
@@ -58,16 +55,6 @@ syntax on
 
 " Define o background para temas escuros. Usar `light` para temas claros
 set background=dark
-
-" [TEMA] Configurações para tema palenight -----------------------------------
-
-" set termguicolors
-
-" Define o tema
-colorscheme palenight
-
-" Tema Airline
-let g:airline_theme='palenight'
 
 " Define se a cor usada pelo indentLine vai seguir o tema (0) ou o padrão do
 " indentLine (1), que é cinza
@@ -135,7 +122,7 @@ endfunction
 nmap <leader>ac <Plug>(coc-codeaction)
 
 " Atalho para aplicar autofix no problema da linha selecionada
-nmap <leader>f <Plug>(coc-fix-current)
+nmap <leader>qf <Plug>(coc-fix-current)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
@@ -199,7 +186,7 @@ set path+=**
 " UI e Layout ----------------------------------------------------------------
 
 " Marcar linha atual
-set cursorline
+set nocursorline
 
 " exibir números de linhas
 set number
@@ -392,6 +379,9 @@ set writebackup
 
 " Ajuste para hot reloading (desabilitar o 'safe write')
 set backupcopy=yes
+
+" Muda diretório automaticamente
+set autochdir
 
 " Correção de typos ----------------------------------------------------------
 
