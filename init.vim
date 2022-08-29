@@ -393,7 +393,9 @@ iabbrev heigth height
 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
-hi CocMenuSel ctermbg=111 ctermfg=0 guibg=#87afff
+hi CocMenuSel ctermbg=green ctermfg=black guibg=#87afff
+hi Pmenu ctermfg=green ctermbg=black
+hi Comment ctermfg=green guifg=green
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -404,3 +406,4 @@ nmap <leader>c <Plug>(coc-codeaction-selected)<cr>
 
 nnoremap ,n :call CocAction('diagnosticNext')<CR>
 nnoremap ,p :call CocAction('diagnosticPrevious')<CR>
+
