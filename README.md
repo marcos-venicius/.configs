@@ -54,16 +54,11 @@ iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
 # Coc Extensions
 
 ```
-:CocInstall coc-html coc-tsserver coc-css coc-prettier coc-eslint coc-json coc-docker coc-spell-checker coc-cspell-dicts
+:CocInstall coc-html coc-tsserver coc-css coc-prettier coc-eslint coc-json coc-docker coc-spell-checker coc-cspell-dicts coc-omnisharp
 ```
 
+## Install Omnisharp dependencies
 
-## Coc Settings 
-
-```json
-{
-  "suggest.noselect": false,
-  "cSpellExt.enableDictionaries": ["portuguese-brazilian"],
-  "cSpell.language": "en,pt,pt_BR"
-}
+```bash
+dotnet tool install --global csharp-ls
 ```
