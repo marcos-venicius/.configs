@@ -1,6 +1,8 @@
 " Plugins --------------------------------------------------------------------
 
 call plug#begin()
+  Plug 'KabbAmine/yowish.vim'	
+
   " Prisma code highlight
   Plug 'pantharshit00/vim-prisma'
 
@@ -407,3 +409,8 @@ nmap <leader>c <Plug>(coc-codeaction-selected)<cr>
 nnoremap ,n :call CocAction('diagnosticNext')<CR>
 nnoremap ,p :call CocAction('diagnosticPrevious')<CR>
 
+let g:yowish = {}
+let g:yowish.nerdtree = 1
+let g:yowish.comment_italic = 1
+
+colorscheme yowish
