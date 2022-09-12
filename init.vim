@@ -382,9 +382,6 @@ set writebackup
 " Ajuste para hot reloading (desabilitar o 'safe write')
 set backupcopy=yes
 
-" Muda diretório automaticamente
-set autochdir
-
 " Correção de typos ----------------------------------------------------------
 
 nmap <F2> <Plug>(coc-rename)
@@ -410,6 +407,26 @@ nnoremap ,n :call CocAction('diagnosticNext')<CR>
 nnoremap ,p :call CocAction('diagnosticPrevious')<CR>
 
 let g:yowish = {}
+let g:yowish.colors = {
+			\	'background'        : ['#000000', '0'],
+			\	'backgroundDark'    : ['#000000', '232'],
+			\	'backgroundLight'   : ['#000000', '236'],
+			\	'comment'           : ['#6e6e6e', '242'],
+			\	'green'             : ['#2acf2a', '40'],
+			\	'lightBlue'         : ['#6699cc', '67'],
+			\	'lightGreen'        : ['#99cc99','108'],
+			\	'lightRed'          : ['#f2777a', '203'],
+			\	'lightViolet'       : ['#d09cea', '171'],
+			\	'lightYellow'       : ['#ffcc66', '222'],
+			\	'red'               : ['#f01d22', '160'],
+			\	'selected'          : ['#373b41', '234'],
+			\	'text'              : ['#cbcbcb', '251'],
+			\	'textDark'          : ['#bebebe', '249'],
+			\	'textExtraDark'     : ['#8c8c8c', '244'],
+			\	'textLight'         : ['#ebebeb', '255'],
+			\	'yellow'            : ['#ffbe3c', '215'],
+			\ }
+
 let g:yowish.nerdtree = 1
 let g:yowish.comment_italic = 1
 
