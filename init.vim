@@ -392,10 +392,6 @@ iabbrev heigth height
 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
-hi CocMenuSel ctermbg=green ctermfg=black guibg=#87afff
-hi Pmenu ctermfg=green ctermbg=black
-hi Comment ctermfg=green guifg=green
-
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -413,15 +409,15 @@ let g:yowish.colors = {
 			\	'backgroundLight'   : ['#000000', '236'],
 			\	'comment'           : ['#6e6e6e', '242'],
 			\	'green'             : ['#2acf2a', '40'],
-			\	'lightBlue'         : ['#6699cc', '67'],
-			\	'lightGreen'        : ['#99cc99','108'],
+			\	'lightBlue'         : ['#6699cc', '012'],
+			\	'lightGreen'        : ['#99cc99','111'],
 			\	'lightRed'          : ['#f2777a', '203'],
 			\	'lightViolet'       : ['#d09cea', '171'],
-			\	'lightYellow'       : ['#ffcc66', '222'],
+			\	'lightYellow'       : ['#00ff00', '010'],
 			\	'red'               : ['#f01d22', '160'],
 			\	'selected'          : ['#373b41', '234'],
-			\	'text'              : ['#cbcbcb', '251'],
-			\	'textDark'          : ['#bebebe', '249'],
+			\	'text'              : ['#cbcbcb', '250'],
+			\	'textDark'          : ['#bebebe', '200'],
 			\	'textExtraDark'     : ['#8c8c8c', '244'],
 			\	'textLight'         : ['#ebebeb', '255'],
 			\	'yellow'            : ['#ffbe3c', '215'],
@@ -431,3 +427,8 @@ let g:yowish.nerdtree = 1
 let g:yowish.comment_italic = 1
 
 colorscheme yowish
+
+hi CocMenuSel ctermbg=green ctermfg=black guibg=#87afff
+hi Pmenu ctermfg=green ctermbg=black
+hi Comment ctermfg=101 guifg=101
+
