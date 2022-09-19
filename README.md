@@ -62,3 +62,5 @@ iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
 ```bash
 dotnet tool install --global csharp-ls
 ```
+
+[RTL8188FTV driver](https://github.com/kelebek333/rtl8188fu)
