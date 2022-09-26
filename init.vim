@@ -1,4 +1,5 @@
 call plug#begin()
+  Plug 'jaredgorski/spacecamp'
   Plug 'morhetz/gruvbox'
   Plug 'pantharshit00/vim-prisma'
   Plug 'vim-airline/vim-airline'
@@ -173,5 +174,6 @@ nmap <leader>c <Plug>(coc-codeaction-selected)<cr>
 nnoremap <leader>n :call CocAction('diagnosticNext')<CR>
 nnoremap <leader>p :call CocAction('diagnosticPrevious')<CR>
 
-colorscheme gruvbox
-
+" colorscheme gruvbox
+colorscheme spacecamp
+let g:airline_theme='onedark'
