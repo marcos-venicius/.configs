@@ -47,10 +47,12 @@ let g:comfortable_motion_scroll_down_key = "j"
 let g:comfortable_motion_scroll_up_key = "k"
 let g:airline_theme='onedark'
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nnoremap <leader>fd <Plug>(coc-definition)
+nnoremap <leader>ft <Plug>(coc-type-definition)
+nnoremap <leader>fi <Plug>(coc-implementation)
+nnoremap <leader>fr <Plug>(coc-references)
+
+nnoremap <leader>c <Plug>(coc-codeaction-selected)<cr>
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -63,9 +65,6 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
-
-nmap <leader>ac <Plug>(coc-codeaction)
-nmap <leader>qf <Plug>(coc-fix-current)
 
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
@@ -102,6 +101,7 @@ set shiftwidth=2
 set path+=**
 se cursorline
 set number
+set relativenumber
 set list 
 set listchars=tab:▸\
 set listchars+=trail:·
@@ -167,9 +167,7 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <c-space> coc#refresh()
-nnoremap <leader>i :Prettier <CR>
-
-nmap <leader>c <Plug>(coc-codeaction-selected)<cr>
+nnoremap <leader>i :Prettier<CR>
 
 nnoremap <leader>n :call CocAction('diagnosticNext')<CR>
 nnoremap <leader>p :call CocAction('diagnosticPrevious')<CR>
