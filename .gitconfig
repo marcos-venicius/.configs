@@ -1,5 +1,5 @@
 [core]
-	editor = vim
+  editor = vim
 
 [alias]
   co = checkout
@@ -13,3 +13,6 @@
   remotes = remote -v
   untrack = update-index --assume-unchanged
   track = update-index --no-assume-unchanged
+
+[init]
+	defaultBranch = main
