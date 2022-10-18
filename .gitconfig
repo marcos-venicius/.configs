@@ -1,9 +1,9 @@
 [core]
-	editor = nvim
+	editor = vim
 
 [alias]
   co = checkout
-  lg = log --all --graph --decorate --oneline --abbrev-commit
+  lg = log --graph --pretty=fuller --stat --notes --dirstat --abbrev-commit --decorate --all
   cm = commit
   ac = !git add -A && git commit
   st = status -sb
