@@ -1,60 +1,22 @@
 call plug#begin()
-  Plug 'joshdick/onedark.vim'
-  Plug 'pantharshit00/vim-prisma'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes' 
-  Plug 'pangloss/vim-javascript'
-  Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
-  Plug 'sheerun/vim-polyglot' 
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
-  Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-commentary'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'tpope/vim-surround'
-  Plug 'editorconfig/editorconfig-vim'  
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-  Plug 'lambdalisue/fern.vim'
+  " File explorer 
   Plug 'preservim/nerdtree'
+
+  " Autocompletion
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+  " Styled components
+  Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
+
+  " Editor config
+  Plug 'editorconfig/editorconfig-vim'  
+
+  " Commet piece of code
+  Plug 'tpope/vim-commentary'
+
+  " Many languagues highlight
+  Plug 'sheerun/vim-polyglot' 
 call plug#end()
-
-syntax on
-
-set background=dark
-let g:indentLine_setColors = 1
-let g:indentLine_color_term = 237
-
-function! s:h(group, style)
- execute "highlight" a:group
-  \ "guifg=" (has_key(a:style, "fg")    ? a:style.fg   : "NONE")
-  \ "guibg=" (has_key(a:style, "bg")    ? a:style.bg   : "NONE")
-  \ "guisp=" (has_key(a:style, "sp")    ? a:style.sp   : "NONE")
-  \ "gui="   (has_key(a:style, "gui")   ? a:style      : "NONE")
-endfunction
-
-call s:h("ColorColumn", { "bg": "#444444" })
-
-let g:vim_jsx_pretty_highlight_close_tag = 0
-let g:vim_jsx_pretty_colorful_config = 1
-
-let g:airline_powerline_fonts=1
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_symbols.notexists = ' ✗'
-let g:comfortable_motion_scroll_down_key = "j"
-let g:comfortable_motion_scroll_up_key = "k"
-let g:airline_theme='onedark'
-
-nnoremap <leader>fd <Plug>(coc-definition)
-nnoremap <leader>ft <Plug>(coc-type-definition)
-nnoremap <leader>fi <Plug>(coc-implementation)
-nnoremap <leader>fr <Plug>(coc-references)
-
-nnoremap <leader>c <Plug>(coc-codeaction-selected)<cr>
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -66,40 +28,14 @@ function! s:show_documentation()
   endif
 endfunction
 
-command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
-
-let g:fzf_preview_window = []
-
-let $FZF_DEFAULT_OPTS="--preview-window 'right:60%' --layout reverse --margin=0,0 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
-
-let g:fzf_layout = 
-\ { 'window': 
-  \ { 'width': 0.98, 'height': 0.7, 'yoffset': 0.94, 'border': 'rounded' } 
-\ } 
-
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+command! -nargs=0 MakeTags !ctags --recurse=yes --exclude=.git --exclude=BUILD --exclude=.svn --exclude=*.js --exclude=vendor/* --exclude=node_modules/* --exclude=db/* --exclude=log/* --exclude=\*.min.\* --exclude=\*.swp --exclude=\*.bak --exclude=\*.pyc --exclude=\*.class --exclude=\*.sln --exclude=\*.csproj --exclude=\*.csproj.user --exclude=\*.cache --exclude=\*.dll --exclude=\*.pdb
+command! -nargs=1 FindWord :!grep -R --ignore-case --word-regexp --color -E --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.git <f-args>
 
 set omnifunc=rescript#Complete
 set completeopt+=preview
 set expandtab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
 set path+=**
-se cursorline
+set nocursorline
 set number
 set relativenumber
 set list 
@@ -119,63 +55,73 @@ set smartcase
 set undodir=~/.config/nvim/undos
 set undofile
 set list!
-
 set signcolumn=yes
+set background=dark
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set updatetime=300
+
 highlight clear SignColumn
+
+syntax on
+filetype plugin indent on
+filetype plugin detect
 
 let mapleader=" "
 let maplocalleader=" "
 
-nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
-nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
-nnoremap <leader>/ :Commentary<cr>
-vnoremap <leader>/ :Commentary<cr>
-nnoremap <leader><space> :nohlsearch<cr>
-nnoremap <leader>l :set list!<cr>
-nnoremap <leader>yf :let @+ = expand("%")<cr>
-nnoremap <c-p> :Files<cr>
-nnoremap <s-m-p> :GFiles<cr>
-nnoremap <c-o> :Buffers<cr>
-nnoremap go :ls<cr>:b
-nnoremap gv :ls<cr>:vsplit \| b
-nnoremap gh :ls<cr>:split \| b
-nnoremap zin <c-w>_ <c-w>\|
-nnoremap zni <c-w>= 
-nnoremap coe :setlocal conceallevel=<c-r>=&conceallevel == 0 ? '2' : '0'<cr><cr>
+" Save with CTRL+S
 nmap <c-s> :w<cr>
 imap <c-s> <Esc>:w<cr>a
+
+
+" Move lines
 nnoremap <S-A-j> :m .+1<CR>==
 nnoremap <S-A-k> :m .-2<CR>==
 inoremap <S-A-j> <Esc>:m .+1<CR>==gi
 inoremap <S-A-k> <Esc>:m .-2<CR>==gi
 vnoremap <S-A-j> :m '>+1<CR>gv=gv
 vnoremap <S-A-k> :m '<-2<CR>gv=gv
-nnoremap <c-s-m-p> <Nop>
-nnoremap <c-s-m-e> <Nop>
-nnoremap <m-0> <Nop>
-nnoremap <m-1> <Nop>
-nnoremap <m-2> <Nop>
-nnoremap <m-3> <Nop>
-nnoremap nf :NERDTreeFocus<CR>
-nnoremap nt :NERDTree<CR>
-nnoremap ng :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 
-nmap <F2> <Plug>(coc-rename)
+" Zoom in
+nnoremap zin <c-w>_ <c-w>\|
+" Zoom out
+nnoremap zout <c-w>= 
 
-command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+nnoremap coe :setlocal conceallevel=<c-r>=&conceallevel == 0 ? '2' : '0'<cr><cr>
 
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <silent><expr> <c-space> coc#refresh()
-nnoremap <leader>i :Prettier<CR>
+" Open config file
+nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
 
+" Load config file
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+
+" COC
+nnoremap <leader>fd <Plug>(coc-definition)
+nnoremap <leader>ft <Plug>(coc-type-definition)
+nnoremap <leader>fi <Plug>(coc-implementation)
+nnoremap <leader>fr <Plug>(coc-references)
+nnoremap <leader>c <Plug>(coc-codeaction-selected)<cr>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" COC Diagnostics
 nnoremap <leader>n :call CocAction('diagnosticNext')<CR>
 nnoremap <leader>p :call CocAction('diagnosticPrevious')<CR>
 
-let g:onedark_termcolors=256
+" Nerd Tree
+nnoremap <C-f> :NERDTreeToggle<CR>
+nnoremap nf :NERDTreeFocus<CR>
 
-colorscheme onedark
+" Map F2 to rename symbol
+nmap <F2> <Plug>(coc-rename)
 
-hi Normal guibg=NONE ctermbg=NONE
-hi NonText guibg=NONE ctermbg=NONE
+" ENTER confirm first item of list
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Refresh auto completions with CTRL+SPACE
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Format code with prettier
+nnoremap <leader>i :CocCommand prettier.forceFormatDocument<CR>
 
