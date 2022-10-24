@@ -1,3 +1,7 @@
+[user]
+  name = <user_name>
+  email = <user_email>
+
 [core]
   editor = vim
 
@@ -16,3 +20,4 @@
 
 [init]
 	defaultBranch = main
+

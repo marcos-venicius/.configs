@@ -1,15 +1,4 @@
 {
-  "omnisharp.version": "v1.37.3",
-  "omnisharp.trace.server": "information",
-  "omnisharp.debug.server": true,
-  "languageserver": {
-    "csharp-ls": {
-      "command": "csharp-ls",
-      "filetypes": ["cs"],
-      "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
-    }
-  },
-
   "suggest.noselect": false,
   "cSpellExt.enableDictionaries": ["portuguese-brazilian"],
   "cSpell.language": "en,pt,pt_BR",

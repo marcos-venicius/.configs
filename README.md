@@ -1,66 +1,41 @@
-# .configs
+# .CONFIGS
 
-## Configure init.vim - _Windows 10_
+### Clone repository
 
-1. create folder `nvim` at `c:\Users\user_name\AppData\Local`
-2. put this file inside the folder that you have been created
-
-## Configure .tmux.conf - _only linux_
-
-clone project
----
 ```bash
 git clone https://github.com/dev-one-company/.configs.git
 ```
 
-install tmux
----
+### Install tmux
+
 ```bash
 sudo apt update
 sudo apt install tmux
 ```
+### Configure tmux file
 
-move .tmux.conf file
----
 ```bash
-move .tmux.conf ~/
+move ./files/tmux/.tmux.conf ~/
 ```
 
-## Configure profile.ps1 - _Windows 10_
+### Install vim-plug
 
-see profile path
----
-```ps1
-echo $PROFILE
-```
-
-put the [profile.ps1](https://github.com/dev-one-company/.configs/blob/main/profile.ps1) contents at the path containing in `$PROFILE` variable
----
-
-# Install vim-plug
-
-## Windows
-
-> [here](https://github.com/junegunn/vim-plug) is the official repository
-
----
-neovim on windows
-
-```ps1
-iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
-    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
+```bash
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
 # Coc Extensions
 
 ```
-:CocInstall coc-html coc-tsserver coc-css coc-prettier coc-eslint coc-json coc-docker coc-spell-checker coc-cspell-dicts coc-omnisharp coc-emmet coc-python
+:CocInstall coc-html coc-tsserver coc-css coc-prettier coc-eslint coc-json coc-spell-checker coc-cspell-dicts coc-emmet
 ```
 
-## Install Omnisharp dependencies
+### Configure Neovim
 
-```bash
-dotnet tool install --global csharp-ls
-```
+1. Install neovim at [official website](https://neovim.io/)
+2. Install vim-plug in the [Install vim-plug](#install-vim-plug) step
+3. Create the configurations folder `mkdir -p ~/.config/nvim`
+4. Move config files to their directories `mv ./files/nvim/* ~/.config/nvim`
+5. Open neovim with `nvim +PlugInstall`
 
-[RTL8188FTV driver](https://github.com/kelebek333/rtl8188fu)
