@@ -105,6 +105,13 @@ nnoremap <leader>fr <Plug>(coc-references)
 nnoremap <leader>c <Plug>(coc-codeaction-selected)<cr>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+" Commentary
+nnoremap <leader>/ :Commentary<cr>
+vnoremap <leader>/ :Commentary<cr>
+
+" no hlsearch
+nnoremap <leader><space> :nohlsearch<cr>
+
 " COC Diagnostics
 nnoremap <leader>n :call CocAction('diagnosticNext')<CR>
 nnoremap <leader>p :call CocAction('diagnosticPrevious')<CR>
@@ -124,4 +131,3 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Format code with prettier
 nnoremap <leader>i :CocCommand prettier.forceFormatDocument<CR>
-
