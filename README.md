@@ -38,4 +38,15 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 3. Create the configurations folder `mkdir -p ~/.config/nvim`
 4. Move config files to their directories `mv ./files/nvim/* ~/.config/nvim`
 5. Open neovim with `nvim +PlugInstall`
+6. Then install coc extensions
+  1. open neovim `nvim` 
+  2. run [installation command](#coc-extensions)
+
+<br />
+<br />
+<div align="center">
+  <p align="center">
+    <strong>DONE!</strong>
+  </p>
+</div>
 
