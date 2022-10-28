@@ -18,6 +18,9 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot' 
 call plug#end()
 
+let mapleader=" "
+let maplocalleader=" "
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -68,8 +71,6 @@ syntax on
 filetype plugin indent on
 filetype plugin detect
 
-let mapleader=" "
-let maplocalleader=" "
 
 " Save with CTRL+S
 nmap <c-s> :w<cr>
@@ -98,11 +99,12 @@ nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
 " COC
-nnoremap <leader>fd <Plug>(coc-definition)
-nnoremap <leader>ft <Plug>(coc-type-definition)
-nnoremap <leader>fi <Plug>(coc-implementation)
-nnoremap <leader>fr <Plug>(coc-references)
-nnoremap <leader>c <Plug>(coc-codeaction-selected)<cr>
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gt <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>gc <Plug>(coc-codeaction-selected)
+
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Commentary
@@ -113,12 +115,12 @@ vnoremap <leader>/ :Commentary<cr>
 nnoremap <leader><space> :nohlsearch<cr>
 
 " COC Diagnostics
-nnoremap <leader>n :call CocAction('diagnosticNext')<CR>
-nnoremap <leader>p :call CocAction('diagnosticPrevious')<CR>
+nnoremap <leader>l :call CocAction('diagnosticNext')<CR>
+nnoremap <leader>h :call CocAction('diagnosticPrevious')<CR>
 
 " Nerd Tree
 nnoremap <C-f> :NERDTreeToggle<CR>
-nnoremap nf :NERDTreeFocus<CR>
+nnoremap <silent><leader>f :NERDTreeFocus<CR>
 
 " Map F2 to rename symbol
 nmap <F2> <Plug>(coc-rename)
