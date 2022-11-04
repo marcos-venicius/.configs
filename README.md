@@ -6,6 +6,8 @@
 git clone https://github.com/dev-one-company/.configs.git
 ```
 
+# Linux 
+
 ### Install tmux
 
 ```bash
@@ -33,14 +35,24 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 ### Configure Neovim
 
-1. Install neovim at [official website](https://neovim.io/)
-2. Install vim-plug in the [Install vim-plug](#install-vim-plug) step
-3. Create the configurations folder `mkdir -p ~/.config/nvim`
-4. Move config files to their directories `mv ./files/nvim/* ~/.config/nvim`
-5. Open neovim with `nvim +PlugInstall`
-6. Then install coc extensions
-  1. open neovim `nvim` 
-  2. run [installation command](#coc-extensions)
+- Install neovim at [official website](https://neovim.io/)
+- Install vim-plug in the [Install vim-plug](#install-vim-plug) step
+- Create the configurations folder `mkdir -p ~/.config/nvim`
+- Move config files to their directories `mv ./files/nvim/* ~/.config/nvim`
+- Open neovim with `nvim +PlugInstall`
+- Then install coc extensions
+  - open neovim `nvim` 
+  - run [installation command](#coc-extensions)
+
+# Windows
+
+### Configure powershell prompt
+
+- open powershell (as administrator)
+- update execution policy `Set-ExecutionPolicy Unrestricted`
+- open prompt file with `code $PROFILE`
+- paste the code from [profile.ps1](./files/windows/profile.ps1) file
+- save the file and reopen powershell
 
 <br />
 <br />
