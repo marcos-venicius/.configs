@@ -48,7 +48,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 ### Configure powershell prompt
 
-- open powershel (as administrator)
+- open powershell (as administrator)
 - update execution policy `Set-ExecutionPolicy Unrestricted`
 - open prompt file with `code $PROFILE`
 - paste the code from [profile.ps1](./files/windows/profile.ps1) file
