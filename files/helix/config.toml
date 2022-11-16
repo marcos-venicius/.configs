@@ -1,0 +1,42 @@
+theme = "catppuccin_mocha"
+# theme = "onedark"
+
+[editor]
+  cursorline = true
+  line-number = "relative"
+
+[editor.cursor-shape]
+  insert = "block"
+  normal = "block"
+  select = "block"
+
+
+[editor.statusline]
+  left = ["mode", "spinner"]
+  separator = "│"
+  center = ["file-name"]
+  right = [
+    "diagnostics",
+    "selections",
+    "position",
+    "position-percentage",
+    "file-encoding",
+    "file-line-ending",
+    "file-type"
+  ]
+
+[editor.lsp]
+  display-messages = true
+
+[editor.file-picker]
+  git-ignore = false
+
+[editor.whitespace.render]
+  tab = "all"
+
+[editor.whitespace.characters]
+  tab = "→"
+
+[editor.indent-guides]
+  render = true
+  character = "╎"
