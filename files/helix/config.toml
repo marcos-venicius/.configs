@@ -1,12 +1,11 @@
-theme = "catppuccin_mocha"
-# theme = "onedark"
+theme = "ayu_dark"
 
 [editor]
   cursorline = true
   line-number = "relative"
-
+  
 [editor.cursor-shape]
-  insert = "block"
+  insert = "bar"
   normal = "block"
   select = "block"
 
@@ -27,12 +26,15 @@ theme = "catppuccin_mocha"
 
 [editor.lsp]
   display-messages = true
+  auto-signature-help = false
+  display-signature-help-docs = false
 
 [editor.file-picker]
-  git-ignore = false
+  git-ignore = true
 
 [editor.whitespace.render]
   tab = "all"
+  space = "all"
 
 [editor.whitespace.characters]
   tab = "→"
