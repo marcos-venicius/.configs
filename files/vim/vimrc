@@ -21,3 +21,6 @@ filetype plugin detect
 syntax on
 
 hi Comment ctermfg=green
+hi String ctermfg=120
+hi Macro ctermfg=red
+hi Number ctermfg=5
