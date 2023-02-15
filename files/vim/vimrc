@@ -6,7 +6,6 @@ set softtabstop=2
 set expandtab
 set smartindent
 set autoindent
-set path+=**
 set noautochdir
 set nowrap
 set smartcase
@@ -17,6 +16,12 @@ set splitright
 set nocursorline
 set hlsearch
 set incsearch
+set path+=**
+set wildignore+=**/node_modules/**
+set wildignore+=**/dist/**
+set wildignore+=**/build/**
+set wildignore+=**/bin/**
+set wildignore+=**/obj/**
 colorscheme default
 
 filetype plugin indent on
@@ -32,5 +37,4 @@ hi Number ctermfg=5
 vnoremap <c-c> :w !clip.exe<CR>
 " copy the entire file to clipboard
 nnoremap <c-c> :w !clip.exe<CR>
-" format js files, npm i -g prettier@latest
 nnoremap <c-i> :%!prettier % --config .prettierrc<CR>
