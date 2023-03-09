@@ -1,12 +1,14 @@
+set expandtab
+set hlsearch
+set ruler
 set nu
 set rnu
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set expandtab
 set smartindent
 set autoindent
-set noautochdir
+set path+=**
 set nowrap
 set smartcase
 set ignorecase
@@ -14,15 +16,7 @@ set hidden
 set splitbelow
 set splitright
 set nocursorline
-set hlsearch
-set incsearch
-set path+=**
-set wildignore+=**/node_modules/**
-set wildignore+=**/dist/**
-set wildignore+=**/build/**
-set wildignore+=**/bin/**
-set wildignore+=**/obj/**
-colorscheme default
+"set clipboard+=unnamedplus
 
 filetype plugin indent on
 filetype plugin detect
@@ -33,8 +27,7 @@ hi String ctermfg=120
 hi Macro ctermfg=red
 hi Number ctermfg=5
 
-" copy selection to clipboard
-vnoremap <c-c> :w !clip.exe<CR>
-" copy the entire file to clipboard
-nnoremap <c-c> :w !clip.exe<CR>
-nnoremap <c-i> :%!prettier % --config .prettierrc<CR>
+autocmd FileType csharp set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+au BufRead,BufNewFile *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+
