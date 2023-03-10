@@ -27,6 +27,9 @@ hi String ctermfg=120
 hi Macro ctermfg=red
 hi Number ctermfg=5
 
+" quit from terminal mode with <ESC>
+tnoremap <Esc> <C-\><C-n>
+
 autocmd FileType csharp set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 au BufRead,BufNewFile *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
