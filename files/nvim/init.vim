@@ -1,83 +1,93 @@
+" By https://github.com/marcos-venicius
+
+" plugins
 call plug#begin()
-  " File explorer 
-  Plug 'preservim/nerdtree'
-
-  " Autocompletion
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
-  " Styled components
-  Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
-
-  " Editor config
-  Plug 'editorconfig/editorconfig-vim'  
-
-  " Commet piece of code
+  Plug 'doums/darcula'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
   Plug 'tpope/vim-commentary'
+  Plug 'sheerun/vim-polyglot'
 
-  " Many languagues highlight
-  Plug 'sheerun/vim-polyglot' 
+  " Omnisharp plugin to C-SHARP
+  Plug 'OmniSharp/omnisharp-vim'
+
+  " Icons
+  Plug 'nvim-tree/nvim-web-devicons'
+  " File explorer
+  Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'antosha417/nvim-lsp-file-operations'
+
+  Plug 'prabirshrestha/asyncomplete.vim'
 call plug#end()
+
+
+set expandtab
+set hlsearch
+set ruler
+set nu
+set rnu
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set smartindent
+set autoindent
+set path+=**
+set nowrap
+set smartcase
+set ignorecase
+set hidden
+set splitbelow
+set splitright
+set nocursorline
+
+colorscheme darcula
+
+filetype plugin indent on
+filetype plugin detect
+syntax on
+
+hi Comment ctermfg=green
+hi String ctermfg=120
+hi Macro ctermfg=red
+hi Number ctermfg=5
+
+tnoremap <Esc> <C-\><C-n>
 
 let mapleader=" "
 let maplocalleader=" "
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
+" autocmd
+autocmd FileType csharp set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+au BufRead,BufNewFile *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
-command! -nargs=0 MakeTags !ctags --recurse=yes --exclude=.git --exclude=BUILD --exclude=.svn --exclude=*.js --exclude=vendor/* --exclude=node_modules/* --exclude=db/* --exclude=log/* --exclude=\*.min.\* --exclude=\*.swp --exclude=\*.bak --exclude=\*.pyc --exclude=\*.class --exclude=\*.sln --exclude=\*.csproj --exclude=\*.csproj.user --exclude=\*.cache --exclude=\*.dll --exclude=\*.pdb
-command! -nargs=1 FindWord :!grep -R --ignore-case --word-regexp --color -E --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.git <f-args>
+augroup omnisharp_commands
+  autocmd!
 
-set omnifunc=rescript#Complete
-set completeopt+=preview
-set expandtab
-set path+=**
-set nocursorline
-set number
-set relativenumber
-set list 
-set listchars=tab:▸\
-set listchars+=trail:·
-set listchars+=eol:↴
-set listchars+=nbsp:_
-set mouse=a
-set splitbelow
-set splitright
-set hidden
-set inccommand=split
-set nowrap
-set clipboard+=unnamedplus
-set ignorecase
-set smartcase
-set undodir=~/.config/nvim/undos
-set undofile
-set list!
-set signcolumn=yes
-set background=dark
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set updatetime=300
+  " Show type information automatically when the cursor stops moving.
+  " Note that the type is echoed to the Vim command line, and will overwrite
+  " any other messages in this space including e.g. ALE linting messages.
+  autocmd CursorHold *.cs OmniSharpTypeLookup
 
-highlight clear SignColumn
+  " The following commands are contextual, based on the cursor position.
+  autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>osfu <Plug>(omnisharp_find_usages)
+  autocmd FileType cs nmap <silent> <buffer> gI <Plug>(omnisharp_find_implementations)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>ospd <Plug>(omnisharp_preview_definition)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>ospi <Plug>(omnisharp_preview_implementations)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>ost <Plug>(omnisharp_type_lookup)
+  autocmd FileType cs nmap <silent> <buffer> K <Plug>(omnisharp_documentation)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>s <Plug>(omnisharp_find_symbol)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>u <Plug>(omnisharp_fix_usings)
+  autocmd FileType cs nmap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
+  autocmd FileType cs imap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>lf <Plug>(omnisharp_code_format)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>r <Plug>(omnisharp_rename)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>a <Plug>(omnisharp_code_actions)
+  autocmd FileType cs xmap <silent> <buffer> <Leader>a <Plug>(omnisharp_code_actions)
+augroup END
 
-syntax on
-filetype plugin indent on
-filetype plugin detect
-
-
-" Save with CTRL+S
-nmap <c-s> :w<cr>
-imap <c-s> <Esc>:w<cr>a
-
-
-" Move lines
+" move lines
 nnoremap <S-A-j> :m .+1<CR>==
 nnoremap <S-A-k> :m .-2<CR>==
 inoremap <S-A-j> <Esc>:m .+1<CR>==gi
@@ -85,51 +95,50 @@ inoremap <S-A-k> <Esc>:m .-2<CR>==gi
 vnoremap <S-A-j> :m '>+1<CR>gv=gv
 vnoremap <S-A-k> :m '<-2<CR>gv=gv
 
-" Zoom in
-nnoremap zin <c-w>_ <c-w>\|
-" Zoom out
-nnoremap zout <c-w>= 
-
-nnoremap coe :setlocal conceallevel=<c-r>=&conceallevel == 0 ? '2' : '0'<cr><cr>
-
-" Open config file
-nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
-
-" Load config file
-nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
-
-" COC
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gt <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
-nmap <leader>gc <Plug>(coc-codeaction-selected)
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-" Commentary
+" comment/uncomment lines
 nnoremap <leader>/ :Commentary<cr>
 vnoremap <leader>/ :Commentary<cr>
 
 " no hlsearch
 nnoremap <leader><space> :nohlsearch<cr>
 
-" COC Diagnostics
-nnoremap <leader>l :call CocAction('diagnosticNext')<CR>
-nnoremap <leader>h :call CocAction('diagnosticPrevious')<CR>
+" Find files using Telescope command-line sugar.
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>G <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
 
-" Nerd Tree
-nnoremap <C-f> :NERDTreeToggle<CR>
-nnoremap <silent><leader>f :NERDTreeFocus<CR>
+" Omnisharp
+let g:OmniSharp_popup_position = 'peek'
+if has('nvim')
+  let g:OmniSharp_popup_options = {
+  \ 'winblend': 30,
+  \ 'winhl': 'Normal:Normal,FloatBorder:ModeMsg',
+  \ 'border': 'rounded'
+  \}
+else
+  let g:OmniSharp_popup_options = {
+  \ 'highlight': 'Normal',
+  \ 'padding': [0],
+  \ 'border': [1],
+  \ 'borderchars': ['─', '│', '─', '│', '╭', '╮', '╯', '╰'],
+  \ 'borderhighlight': ['ModeMsg']
+  \}
+endif
+let g:OmniSharp_popup_mappings = {
+\ 'sigNext': '<C-n>',
+\ 'sigPrev': '<C-p>',
+\ 'pageDown': ['<C-f>', '<PageDown>'],
+\ 'pageUp': ['<C-b>', '<PageUp>']
+\}
 
-" Map F2 to rename symbol
-nmap <F2> <Plug>(coc-rename)
+let g:OmniSharp_want_snippet = 0
 
-" ENTER confirm first item of list
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+let g:OmniSharp_highlight_groups = {
+\ 'ExcludedCode': 'NonText'
+\}
 
-" Refresh auto completions with CTRL+SPACE
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Format code with prettier
-nnoremap <leader>i :CocCommand prettier.forceFormatDocument<CR>
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+imap <c-@> <Plug>(asyncomplete_force_refresh)
+inoremap <expr><cr> pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+let g:asyncomplete_auto_popup = 1
