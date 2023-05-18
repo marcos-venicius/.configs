@@ -6,6 +6,18 @@
 git clone https://github.com/dev-one-company/.configs.git
 ```
 
+### Vscode asdf dotnet
+
+```bash
+version=`asdf current dotnet-core | awk '{print $2}'`
+export DOTNET_MSBUILD_SDK_RESOLVER_SDKS_DIR=$(echo $HOME/.asdf/installs/dotnet-core/$version/sdk/$version/Sdks)
+export DOTNET_MSBUILD_SDK_RESOLVER_SDKS_VER=$version
+export DOTNET_MSBUILD_SDK_RESOLVER_CLI_DIR=$(echo $HOME/.asdf/installs/dotnet-core/$version)
+code .
+````
+
+this can be saved on your `.bashrc` or `.zshrc` without the `code .`
+
 # Linux 
 
 ### Install tmux
