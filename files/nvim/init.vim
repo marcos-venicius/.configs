@@ -1,6 +1,7 @@
 " By https://github.com/marcos-venicius
 
 call plug#begin()
+  Plug 'nvim-lua/plenary.nvim'
   Plug 'OmniSharp/omnisharp-vim'
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
   Plug 'tpope/vim-commentary'
@@ -9,10 +10,13 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'xiyaowong/transparent.nvim'
   Plug 'dense-analysis/ale'
+  Plug 'morhetz/gruvbox'
 call plug#end()
 
 let g:OmniSharp_server_use_net6 = 1
 let g:transparent_enabled = 1
+
+colorscheme gruvbox
 
 set expandtab
 set hlsearch
@@ -29,7 +33,7 @@ set nowrap
 set smartcase
 set ignorecase
 set hidden
-set signcolumn=yes
+set signcolumn=no
 set splitbelow
 set splitright
 set nocursorline
@@ -37,11 +41,6 @@ set nocursorline
 filetype plugin indent on
 filetype plugin detect
 syntax on
-
-hi Comment ctermfg=green
-hi String ctermfg=120
-hi Macro ctermfg=red
-hi Number ctermfg=5
 
 tnoremap <Esc> <C-\><C-n>
 
@@ -64,25 +63,25 @@ vnoremap <leader>/ :Commentary<cr>
 
 nnoremap <leader><space> :nohlsearch<cr>
 
-nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>F <cmd>Telescope find_files<cr>
 nnoremap <leader>G <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 
 augroup javascript_commands
   autocmd!
-  autocmd FileType js,ts,tsx nmap <silent> gd <Plug>(coc-definition)
-  autocmd FileType js,ts,tsx nmap <silent> gy <Plug>(coc-type-definition)
-  autocmd FileType js,ts,tsx nmap <silent> gI <Plug>(coc-implementation)
-  autocmd FileType js,ts,tsx nmap <silent> gr <Plug>(coc-references)
+  autocmd FileType typescript nmap <silent> gd <Plug>(coc-definition)
+  autocmd FileType typescript nmap <silent> gy <Plug>(coc-type-definition)
+  autocmd FileType typescript nmap <silent> gI <Plug>(coc-implementation)
+  autocmd FileType typescript nmap <silent> gr <Plug>(coc-references)
 
-  autocmd FileType js,ts,tsx nmap <leader>cl  <Plug>(coc-codelens-action)
-  autocmd FileType js,ts,tsx nmap <leader>ca  <Plug>(coc-codeaction-source)
-  autocmd FileType js,ts,tsx nmap <leader>cf  <Plug>(coc-fix-current)
+  autocmd FileType typescript nmap <leader>cl  <Plug>(coc-codelens-action)
+  autocmd FileType typescript nmap <leader>ca  <Plug>(coc-codeaction-source)
+  autocmd FileType typescript nmap <leader>cf  <Plug>(coc-fix-current)
 
-  autocmd FileType js,ts,tsx nmap <leader>rn <Plug>(coc-rename)
+  autocmd FileType typescript nmap <leader>rn <Plug>(coc-rename)
 
-  autocmd FileType js,ts,tsx nnoremap <silent> K :call ShowDocumentation()<CR>
+  autocmd FileType typescript nnoremap <silent> K :call ShowDocumentation()<CR>
 augroup END
 
 augroup csharp_commands
