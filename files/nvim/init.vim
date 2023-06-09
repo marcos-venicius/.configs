@@ -8,15 +8,14 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
   Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'xiyaowong/transparent.nvim'
   Plug 'dense-analysis/ale'
-  Plug 'morhetz/gruvbox'
+  Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
+let ayucolor="dark"
 let g:OmniSharp_server_use_net6 = 1
-let g:transparent_enabled = 1
 
-colorscheme gruvbox
+colorscheme ayu
 
 set expandtab
 set hlsearch
@@ -37,6 +36,7 @@ set signcolumn=no
 set splitbelow
 set splitright
 set nocursorline
+set termguicolors
 
 filetype plugin indent on
 filetype plugin detect
