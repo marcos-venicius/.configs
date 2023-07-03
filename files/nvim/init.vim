@@ -70,18 +70,18 @@ nnoremap <leader>b <cmd>Telescope buffers<cr>
 
 augroup javascript_commands
   autocmd!
-  autocmd FileType typescript nmap <silent> gd <Plug>(coc-definition)
-  autocmd FileType typescript nmap <silent> gy <Plug>(coc-type-definition)
-  autocmd FileType typescript nmap <silent> gI <Plug>(coc-implementation)
-  autocmd FileType typescript nmap <silent> gr <Plug>(coc-references)
+  autocmd FileType typescript,typescriptreact nmap <silent> gd <Plug>(coc-definition)
+  autocmd FileType typescript,typescriptreact nmap <silent> gy <Plug>(coc-type-definition)
+  autocmd FileType typescript,typescriptreact nmap <silent> gI <Plug>(coc-implementation)
+  autocmd FileType typescript,typescriptreact nmap <silent> gr <Plug>(coc-references)
 
-  autocmd FileType typescript nmap <leader>cl  <Plug>(coc-codelens-action)
-  autocmd FileType typescript nmap <leader>ca  <Plug>(coc-codeaction-source)
-  autocmd FileType typescript nmap <leader>cf  <Plug>(coc-fix-current)
+  autocmd FileType typescript,typescriptreact nmap <leader>cl  <Plug>(coc-codelens-action)
+  autocmd FileType typescript,typescriptreact nmap <leader>ca  <Plug>(coc-codeaction-source)
+  autocmd FileType typescript,typescriptreact nmap <leader>cf  <Plug>(coc-fix-current)
 
-  autocmd FileType typescript nmap <leader>rn <Plug>(coc-rename)
+  autocmd FileType typescript,typescriptreact nmap <leader>rn <Plug>(coc-rename)
 
-  autocmd FileType typescript nnoremap <silent> K :call ShowDocumentation()<CR>
+  autocmd FileType typescript,typescriptreact nnoremap <silent> K :call ShowDocumentation()<CR>
 augroup END
 
 augroup csharp_commands
