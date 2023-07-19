@@ -22,6 +22,7 @@ set hlsearch
 set ruler
 set nu
 set rnu
+set cursorline
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -82,6 +83,11 @@ augroup javascript_commands
   autocmd FileType typescript,typescriptreact nmap <leader>rn <Plug>(coc-rename)
 
   autocmd FileType typescript,typescriptreact nnoremap <silent> K :call ShowDocumentation()<CR>
+  autocmd FileType typescript,typescriptreact nnoremap <leader>i :CocCommand prettier.forceFormatDocument<CR>
+augroup END
+
+augroup other_commands
+  autocmd FileType markdown,md nnoremap <leader>i :CocCommand prettier.forceFormatDocument<CR>
 augroup END
 
 augroup csharp_commands
@@ -146,3 +152,6 @@ nnoremap <C-f> :NERDTreeToggle<CR>
 let g:ale_linters = {
 \ 'cs': ['OmniSharp']
 \}
+
+let g:markdown_fenced_languages = ['html', 'python', 'lua', 'vim', 'typescript', 'javascript']
+
