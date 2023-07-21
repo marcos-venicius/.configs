@@ -40,7 +40,6 @@ set hidden
 set signcolumn=no
 set splitbelow
 set splitright
-set nocursorline
 set termguicolors
 
 filetype plugin indent on
@@ -113,11 +112,12 @@ augroup csharp_commands
   autocmd FileType cs nmap <silent> <buffer> <Leader>ca <Plug>(omnisharp_code_actions)
   autocmd FileType cs xmap <silent> <buffer> <Leader>ca <Plug>(omnisharp_code_actions)
 
-  autocmd FileType cs nmap <silent> <buffer> <Leader>f <Plug>(omnisharp_code_format)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>i <Plug>(omnisharp_code_format)
 
   autocmd FileType cs nmap <silent> <buffer> <Leader>rn <Plug>(omnisharp_rename)
 augroup END
 
+nnoremap <leader>r :NERDTreeFind<cr>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
@@ -161,3 +161,4 @@ let g:ale_linters = {
 \}
 
 let g:markdown_fenced_languages = ['html', 'python', 'lua', 'vim', 'typescript', 'javascript']
+
