@@ -9,13 +9,17 @@ call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'dense-analysis/ale'
-  Plug 'ayu-theme/ayu-vim'
+  " Plug 'ayu-theme/ayu-vim'
+  Plug 'joshdick/onedark.vim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 let ayucolor="dark"
 let g:OmniSharp_server_use_net6 = 1
+let g:onedark_terminal_italics = 1
 
-colorscheme ayu
+" colorscheme ayu
+colorscheme onedark
 
 set expandtab
 set hlsearch
