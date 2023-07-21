@@ -52,6 +52,9 @@ autocmd FileType csharp set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 au BufRead,BufNewFile *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
+" break the line with 120 chars
+nnoremap <leader>l 120lwhdli<CR><ESC>
+
 nnoremap <S-A-j> :m .+1<CR>==
 nnoremap <S-A-k> :m .-2<CR>==
 inoremap <S-A-j> <Esc>:m .+1<CR>==gi
@@ -154,4 +157,3 @@ let g:ale_linters = {
 \}
 
 let g:markdown_fenced_languages = ['html', 'python', 'lua', 'vim', 'typescript', 'javascript']
-
