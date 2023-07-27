@@ -10,7 +10,8 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'dense-analysis/ale'
   " Plug 'ayu-theme/ayu-vim'
-  Plug 'joshdick/onedark.vim'
+  " Plug 'joshdick/onedark.vim'
+  Plug 'slugbyte/yuejiu'
   Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
@@ -19,7 +20,8 @@ let g:OmniSharp_server_use_net6 = 1
 let g:onedark_terminal_italics = 1
 
 " colorscheme ayu
-colorscheme onedark
+" colorscheme onedark
+colorscheme yuejiu
 
 set expandtab
 set hlsearch
@@ -161,4 +163,3 @@ let g:ale_linters = {
 \}
 
 let g:markdown_fenced_languages = ['html', 'python', 'lua', 'vim', 'typescript', 'javascript']
-
