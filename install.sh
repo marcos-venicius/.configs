@@ -80,6 +80,23 @@ mv .tmux.conf ~
 
 echo "TMUX CONFIGURED"
 
+echo "CONFIGURING COMMAND SHRINK"
+
+cd ~ && echo "export SHRINK_TERMINAL=bash" >> ~/.bashrc && mkdir .shrink && cd .shrink && git clone https://github.com/marcos-venicius/command-shrink.git shrink && echo 'shrink() { ~/.shrink/shrink/cli.py "$@"; exec bash; }' >> ~/.bashrc && cd ~ && SHRINK_TERMINAL=bash shrink -help
+
+source ~/.bashrc
+
+# My default shrink configurations
+# To see more access: https://github.com/marcos-venicius/command-shrink
+
+shrink st @ "git st"
+shrink cm @ "git commit -m"
+shrink all @ "git add -A"
+shrink psh @ "git push"
+shrink update @ "git fetch && git fetch --prune && git pull"
+
+echo "COMMAND SHRINK CONFIGURED"
+
 clear
 
 echo Done!
