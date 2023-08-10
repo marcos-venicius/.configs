@@ -1,5 +1,7 @@
 " By https://github.com/marcos-venicius
 
+let g:coc_global_extensions = ['coc-tsserver', 'coc-solargraph', 'coc-jedi', 'coc-css', 'coc-emmet', 'coc-prettier', 'coc-json']
+
 call plug#begin()
   Plug 'nvim-lua/plenary.nvim'
   Plug 'OmniSharp/omnisharp-vim'
@@ -9,20 +11,18 @@ call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'dense-analysis/ale'
-  " Plug 'ayu-theme/ayu-vim'
-  " Plug 'joshdick/onedark.vim'
+  Plug 'f-person/git-blame.nvim'
+  Plug 'Mofiqul/vscode.nvim'
   Plug 'slugbyte/yuejiu'
   Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
-let ayucolor="dark"
 let g:OmniSharp_server_use_net6 = 1
 let g:onedark_terminal_italics = 1
 
-" colorscheme ayu
-" colorscheme onedark
-colorscheme yuejiu
+colorscheme vscode
 
+set background=dark
 set expandtab
 set hlsearch
 set ruler
