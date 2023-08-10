@@ -89,6 +89,22 @@ mv .tmux.conf ~
 
 echo "TMUX CONFIGURED"
 
+echo "CONFIGURING ASDF"
+
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+echo '". "$HOME/.asdf/asdf.sh"' >> ~/.bashrc
+echo '. "$HOME/.asdf/completions/asdf.bash"' >> ~/.bashrc
+
+echo "ASDF CONFIGURED"
+
+echo "CONFIGURING RVM"
+
+sudo apt install gnupg
+gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://get.rvm.io | bash
+
+echo "RVM CONFIGURED"
+
 echo "CONFIGURING COMMAND SHRINK"
 
 cd ~ && echo "export SHRINK_TERMINAL=bash" >> ~/.bashrc && mkdir .shrink && cd .shrink && git clone https://github.com/marcos-venicius/command-shrink.git shrink && echo 'shrink() { ~/.shrink/shrink/cli.py "$@"; exec bash; }' >> ~/.bashrc && cd ~ && SHRINK_TERMINAL=bash shrink -help
@@ -109,7 +125,6 @@ echo "COMMAND SHRINK CONFIGURED"
 clear
 
 echo Done!
-
 
 echo "Please open nvim and run :PlugInstall"
 

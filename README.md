@@ -1,25 +1,20 @@
 # My personal configs
 
-### Install tmux, git, nvim and command shrink
+### Install tmux, asdf, rvm, git, nvim and command shrink
 
-[download installer](./install.sh)
+[download the script](./configure-dev-env.sh)
 
 Download the file and make it executable with:
 
 ```bash
-chmod u+x ./install.sh
+chmod u+x ./configure-dev-env.sh
 ```
 
-Just open the file and update the lines:
+run the script.
 
-```bash
-GIT_EMAIL="<your-github-email>"
-GIT_USERNAME="<your-github-username>"
-```
+After open nvim with `nvim` nd run `:PlugInstall`
 
-to your current info, and run the program.
-
-After open nvim with `nvim` and run `:PlugInstall`
+**Now, you should exit your current terminal session and open another one to make sure everything loads correctly.**
 
 ### Install docker easy
 
