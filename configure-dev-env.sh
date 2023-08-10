@@ -1,7 +1,16 @@
 #!/bin/bash
 
-GIT_EMAIL="<your-github-email>"
-GIT_USERNAME="<your-github-username>"
+help() {
+  echo "usage: ./configure-dev-env.sh <GITHUB-EMAIL> <GITHUB-USERNAME>"
+}
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+  help
+  exit 1
+fi
+
+GIT_EMAIL="$1"
+GIT_USERNAME="$2"
 
 # Install git
 
@@ -84,16 +93,16 @@ echo "CONFIGURING COMMAND SHRINK"
 
 cd ~ && echo "export SHRINK_TERMINAL=bash" >> ~/.bashrc && mkdir .shrink && cd .shrink && git clone https://github.com/marcos-venicius/command-shrink.git shrink && echo 'shrink() { ~/.shrink/shrink/cli.py "$@"; exec bash; }' >> ~/.bashrc && cd ~ && SHRINK_TERMINAL=bash shrink -help
 
-source ~/.bashrc
-
 # My default shrink configurations
 # To see more access: https://github.com/marcos-venicius/command-shrink
 
-shrink st @ "git st"
-shrink cm @ "git commit -m"
-shrink all @ "git add -A"
-shrink psh @ "git push"
-shrink update @ "git fetch && git fetch --prune && git pull"
+~/.shrink/shrink/cli.py st @ "git st"
+~/.shrink/shrink/cli.py cm @ "git commit -m"
+~/.shrink/shrink/cli.py all @ "git add -A"
+~/.shrink/shrink/cli.py psh @ "git push"
+~/.shrink/shrink/cli.py update @ "git fetch && git fetch --prune && git pull"
+~/.shrink/shrink/cli.py clone @ "git clone"
+~/.shrink/shrink/cli.py tl @ "tmux list-sessions"
 
 echo "COMMAND SHRINK CONFIGURED"
 
@@ -105,3 +114,4 @@ echo Done!
 echo "Please open nvim and run :PlugInstall"
 
 cd ~
+
