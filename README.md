@@ -2,7 +2,7 @@
 
 ### Install tmux, asdf, rvm, git, nvim and command shrink
 
-[download the script](./configure-dev-env.sh)
+[download the script](./scripts/configure-dev-env.sh)
 
 Download the file and make it executable with:
 
@@ -18,7 +18,7 @@ After open nvim with `nvim` nd run `:PlugInstall`
 
 ### Install docker easy
 
-[download installer](./install-docker-ubuntu.sh)
+[download the script](./scripts/install-docker-ubuntu.sh)
 
 Just download the file and make it executable with:
 
@@ -30,7 +30,7 @@ Now, run the script and **booom** you have the latest version of docker!
 
 ### Configure Flat Remix Theme
 
-[download installer](/files/install-flat-remix-theme.sh)
+[download the script](./scripts/install-flat-remix-theme.sh)
 
 make this executable with:
 

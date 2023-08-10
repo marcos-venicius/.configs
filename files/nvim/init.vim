@@ -1,7 +1,5 @@
 " By https://github.com/marcos-venicius
 
-let g:coc_global_extensions = ['coc-tsserver', 'coc-solargraph', 'coc-jedi', 'coc-css', 'coc-emmet', 'coc-prettier', 'coc-json']
-
 call plug#begin()
   Plug 'nvim-lua/plenary.nvim'
   Plug 'OmniSharp/omnisharp-vim'
@@ -19,6 +17,8 @@ call plug#end()
 
 let g:OmniSharp_server_use_net6 = 1
 let g:onedark_terminal_italics = 1
+let g:coc_global_extensions = ['coc-tsserver', 'coc-solargraph', 'coc-jedi', 'coc-css', 'coc-emmet', 'coc-prettier', 'coc-json']
+let g:markdown_fenced_languages = ['html', 'python', 'lua', 'vim', 'typescript', 'javascript']
 
 colorscheme vscode
 
@@ -162,4 +162,3 @@ let g:ale_linters = {
 \ 'cs': ['OmniSharp']
 \}
 
-let g:markdown_fenced_languages = ['html', 'python', 'lua', 'vim', 'typescript', 'javascript']
