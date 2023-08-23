@@ -119,6 +119,12 @@ cd ~ && echo "export SHRINK_TERMINAL=bash" >> ~/.bashrc && mkdir .shrink && cd .
 ~/.shrink/shrink/cli.py update @ "git fetch && git fetch --prune && git pull"
 ~/.shrink/shrink/cli.py clone @ "git clone"
 ~/.shrink/shrink/cli.py tl @ "tmux list-sessions"
+~/.shrink/shrink/cli.py ta @ "tmux attach-session -t"
+~/.shrink/shrink/cli.py up @ "docker compose up -d"
+~/.shrink/shrink/cli.py down @ "docker compose down"
+~/.shrink/shrink/cli.py build @ "docker compose build --no-cache"
+~/.shrink/shrink/cli.py m @ "mkdir"
+~/.shrink/shrink/cli.py lg @ "git lg"
 
 echo "COMMAND SHRINK CONFIGURED"
 
