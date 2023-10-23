@@ -13,14 +13,30 @@ call plug#begin()
   Plug 'Mofiqul/vscode.nvim'
   Plug 'slugbyte/yuejiu'
   Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  Plug 'ericbn/vim-solarized'
+  Plug 'gouch/vim-ballroom'
+  Plug 'navarasu/onedark.nvim'
+  Plug 'xiyaowong/transparent.nvim'
 call plug#end()
+
+colorscheme onedark
 
 let g:OmniSharp_server_use_net6 = 1
 let g:onedark_terminal_italics = 1
 let g:coc_global_extensions = ['coc-tsserver', 'coc-solargraph', 'coc-jedi', 'coc-css', 'coc-emmet', 'coc-prettier', 'coc-json']
 let g:markdown_fenced_languages = ['html', 'python', 'lua', 'vim', 'typescript', 'javascript']
 
-colorscheme vscode
+let g:onedark_config = {
+  \ 'transparent': 1,
+  \ 'style': 'deep',
+  \ 'toggle_style_key': '<leader>ts',
+  \ 'ending_tildes': v:true,
+  \ 'diagnostics': {
+    \ 'darker': v:false,
+    \ 'background': v:false,
+  \ },
+\ }
 
 set background=dark
 set expandtab
@@ -53,6 +69,8 @@ tnoremap <Esc> <C-\><C-n>
 let mapleader=" "
 let maplocalleader=" "
 
+nnoremap <leader>d :CocDiagnostics<CR>
+
 autocmd FileType csharp set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 au BufRead,BufNewFile *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
@@ -79,19 +97,19 @@ nnoremap <leader>b <cmd>Telescope buffers<cr>
 
 augroup javascript_commands
   autocmd!
-  autocmd FileType typescript,typescriptreact nmap <silent> gd <Plug>(coc-definition)
-  autocmd FileType typescript,typescriptreact nmap <silent> gy <Plug>(coc-type-definition)
-  autocmd FileType typescript,typescriptreact nmap <silent> gI <Plug>(coc-implementation)
-  autocmd FileType typescript,typescriptreact nmap <silent> gr <Plug>(coc-references)
+  autocmd FileType javascript,typescript,typescriptreact nmap <silent> gd <Plug>(coc-definition)
+  autocmd FileType javascript,typescript,typescriptreact nmap <silent> gy <Plug>(coc-type-definition)
+  autocmd FileType javascript,typescript,typescriptreact nmap <silent> gI <Plug>(coc-implementation)
+  autocmd FileType javascript,typescript,typescriptreact nmap <silent> gr <Plug>(coc-references)
 
-  autocmd FileType typescript,typescriptreact nmap <leader>cl  <Plug>(coc-codelens-action)
-  autocmd FileType typescript,typescriptreact nmap <leader>ca  <Plug>(coc-codeaction-source)
-  autocmd FileType typescript,typescriptreact nmap <leader>cf  <Plug>(coc-fix-current)
+  autocmd FileType javascript,typescript,typescriptreact nmap <leader>cl  <Plug>(coc-codelens-action)
+  autocmd FileType javascript,typescript,typescriptreact nmap <leader>ca  <Plug>(coc-codeaction-source)
+  autocmd FileType javascript,typescript,typescriptreact nmap <leader>cf  <Plug>(coc-fix-current)
 
-  autocmd FileType typescript,typescriptreact nmap <leader>rn <Plug>(coc-rename)
+  autocmd FileType javascript,typescript,typescriptreact nmap <leader>rn <Plug>(coc-rename)
 
-  autocmd FileType typescript,typescriptreact nnoremap <silent> K :call ShowDocumentation()<CR>
-  autocmd FileType typescript,typescriptreact nnoremap <leader>i :CocCommand prettier.forceFormatDocument<CR>
+  autocmd FileType javascript,typescript,typescriptreact nnoremap <silent> K :call ShowDocumentation()<CR>
+  autocmd FileType javascript,typescript,typescriptreact nnoremap <leader>i :CocCommand prettier.forceFormatDocument<CR>
 augroup END
 
 augroup other_commands
