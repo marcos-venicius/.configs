@@ -19,11 +19,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   {
-    "Tsuzat/NeoSolarized.nvim",
+    "catppuccin/nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      vim.cmd [[ colorscheme NeoSolarized ]]
+      vim.cmd [[ colorscheme catppuccin ]]
     end
   },
   {
@@ -123,16 +123,6 @@ require('lazy').setup({
       end,
     },
   },
-
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
-
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -231,6 +221,12 @@ vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.expandtab = true
 vim.o.wrap = false
+
+vim.cmd[[
+  autocmd FileType cs set tabstop=4
+  autocmd FileType cs set shiftwidth=4
+  autocmd FileType cs set softtabstop=4
+]]
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
