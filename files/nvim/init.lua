@@ -2,6 +2,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.o.splitbelow = true
+vim.o.splitright = true
+
+vim.cmd [[ colorscheme lunaperche ]]
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 
@@ -18,14 +22,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  {
-    "catppuccin/nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      vim.cmd [[ colorscheme catppuccin-mocha ]]
-    end
-  },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
@@ -234,7 +230,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set('n', '<c-f>', ':NvimTreeFindFileToggle<CR>')
-vim.keymap.set('n', '<leader>i', ':EslintFixAll<CR>')
+vim.keymap.set('n', '<leader>i', ':silent %!prettier --stdin-filepath %<CR>')
 
 
 -- [[ Highlight on yank ]]
