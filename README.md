@@ -1,6 +1,8 @@
 # My personal configs
 
-### Install tmux, asdf, rvm, git, nvim and command shrink
+### Install tmux, asdf, git, nvim and command shrink
+
+![image](https://github.com/marcos-venicius/.configs/assets/94018427/a87ab57a-30a8-46e5-b1f0-65082c1e2241)
 
 [download the script](./scripts/configure-dev-env.sh)
 
@@ -11,8 +13,6 @@ chmod u+x ./configure-dev-env.sh
 ```
 
 run the script.
-
-After open nvim with `nvim` nd run `:PlugInstall`
 
 **Now, you should exit your current terminal session and open another one to make sure everything loads correctly.**
 
