@@ -46,7 +46,7 @@ sudo mkdir /opt/nvim
 mv nvim.appimage /opt/nvim
 sudo ln -s /opt/nvim/nvim.appimage /usr/bin/nv
 mkdir ~/.config/nvim
-wget https://github.com/marcos-venicius/.configs/blob/main/files/nvim/init.lua --output-document=$HOME/.config/nvim/init.lua
+wget https://raw.githubusercontent.com/marcos-venicius/.configs/main/files/nvim/init.lua --output-document=$HOME/.config/nvim/init.lua
 
 # CONFIGURE TMUX
 
