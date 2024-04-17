@@ -2,6 +2,7 @@ let mapleader=' '
 let maplocalleader=' '
 
 set expandtab
+set wildmenu
 set hlsearch
 set ruler
 set nu
@@ -18,7 +19,7 @@ set ignorecase
 set hidden
 set splitbelow
 set splitright
-set cursorline
+set nocursorline
 set nobackup
 set nowritebackup
 set patchmode=off
@@ -48,7 +49,9 @@ vnoremap <S-A-k> :m '<-2<CR>gv=gv
 hi Comment ctermfg=green
 hi String ctermfg=120
 hi Macro ctermfg=red
-hi Number ctermfg=5
+hi Number ctermfg=blue
+hi Include ctermfg=50
+hi Identifier ctermfg=190
 
 autocmd FileType csharp set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType *.cs set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
