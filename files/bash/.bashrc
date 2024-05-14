@@ -21,19 +21,23 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
 fi
 
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias st="git st"
-alias cm="git commit -m"
-alias all="git add -A"
-alias psh="git push"
-alias gpull="git fetch && git fetch --prune && git pull"
-alias clone="git clone"
+alias tx="tmux"
 alias tl="tmux list-sessions"
+alias tn="tmux new -d -s"
 alias ta="tmux attach-session -t"
-alias m="mkdir"
+alias st="git st"
 alias lg="git lg"
+alias all="git add -A"
+alias add.="git add ."
+alias cm="git commit -m"
+alias psh="git push"
+alias gpush='git push -u origin $(git branch  | grep ^\* | grep -oP "\w.+" --color=none)'
+alias gpull="git fetch && git fetch --prune && git pull"
+alias dffs="git diff --staged"
+alias dff="git diff"
+alias nb="git checkout -b"
+alias t="tree --gitignore -a -L"
+alias r="trash"
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
