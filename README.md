@@ -53,3 +53,10 @@ after all be configured, an window of `gnome-tweaks` will be opened to you, choo
 ```bash
 gsettings set org.gnome.mutter workspaces-only-on-primary false
 ```
+
+### Enabling fingerprint in ubuntu
+
+```bash
+wget http://dell.archive.canonical.com/updates/pool/public/libf/libfprint-2-tod1-goodix/libfprint-2-tod1-goodix_0.0.4-0ubuntu1somerville1_amd64.deb
+sudo dpkg -i libfprint-2-tod1-goodix_0.0.4-0ubuntu1somerville1_amd64.deb
+```
